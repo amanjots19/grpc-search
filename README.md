@@ -44,7 +44,7 @@ This is the default target. It generates the protobuf files and builds the serve
 ```
 make
 ```
-
+Generate protobuf files:
 ```
 make proto
 ```
