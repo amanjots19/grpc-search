@@ -61,7 +61,7 @@ message GetUserRequest {
 }
 ```
 
-### Further functional definition can be found under proto/service.proto
+Further functional definition can be found under proto/service.proto
 
 ```
 export PATH=$PATH:$(go env GOPATH)/bin
