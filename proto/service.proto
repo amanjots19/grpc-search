@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/amanjots19/grpc-search";
+
+service TransacUser {
+  rpc AddUser (UserModel) returns (APIResp) {}
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+}
+
+message UserModel {
+  int64 ID = 1;
+  string Name = 2;
+  string Email = 3;
+  string City = 4;
+  string Phone = 5;
+  string Married = 6;
+}
+message APIResp {
+  bool success = 1;
+  string message = 2;
+  string error = 3;
+}
+
+message GetUserRequest {
+  oneof criteria {
+    int64 id = 1;
+    IdsRequest idsRequest = 2;
+    SearchCriteria search = 3;
+  } 
+}
+
+message IdsRequest {
+  repeated int64 ids = 1;
+}
+
+message GetUserResponse {
+  repeated UserModel users = 1;
+  string error = 2;
+  bool success = 3;
+}
+message SearchCriteria {
+  string name = 1;
+  string email = 2;
+  string city = 3;
+  string phone = 4;
+}
+
