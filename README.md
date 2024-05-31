@@ -29,8 +29,41 @@ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
 
+## GRPC endpoints Definition
+```
+service TransacUser {
+  rpc AddUser (UserModel) returns (APIResp) {}
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+}
+```
 
-```sh
+AddUser accepts user Model with schema: 
+```
+message UserModel {
+  int64 ID = 1;
+  string Name = 2;
+  string Email = 3;
+  string City = 4;
+  string Phone = 5;
+  string Married = 6;
+}
+```
+
+GetUser can be used as a dynamic search query executor: 
+It accepts argument with schema: 
+```
+message GetUserRequest {
+  oneof criteria {
+    int64 id = 1;
+    IdsRequest idsRequest = 2;
+    SearchCriteria search = 3;
+  } 
+}
+```
+
+### Further functional definition can be found under proto/service.proto
+
+```
 export PATH=$PATH:$(go env GOPATH)/bin
 ```
 ## Makefile Targets
