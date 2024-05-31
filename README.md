@@ -28,6 +28,10 @@ To install the `protoc` plugins, run:
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
+Set Env Path
+```
+export PATH=$PATH:$(go env GOPATH)/bin
+```
 
 ## GRPC endpoints Definition
 ```
@@ -63,9 +67,7 @@ message GetUserRequest {
 
 Further functional definition can be found under proto/service.proto
 
-```
-export PATH=$PATH:$(go env GOPATH)/bin
-```
+
 ## Makefile Targets
 
 The Makefile provides several targets to streamline the development process. Below are the main targets and their descriptions:
